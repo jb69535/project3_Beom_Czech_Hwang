@@ -2,8 +2,8 @@
 
 ## * Group:
 
-💻 Jun Beom(TestTupleGenerator.java modified, javadoc, readme, Makefile), `</br>`
-💻 Brandon Czech(LinHashMap.java modified),`</br>`
+💻 Jun Beom(TestTupleGenerator.java modified, javadoc, readme, Makefile), </br>
+💻 Brandon Czech(LinHashMap.java modified),</br>
 💻 Wonjoon Hwang(Table.java modified, Performance Evaluation)
 
 ## * How to Compile, Run, Clean:
