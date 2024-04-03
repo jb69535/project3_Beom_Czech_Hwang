@@ -1,3 +1,4 @@
+package src;
  
 /*****************************************************************************************
  * @file  TestTupleGenerator.java
@@ -63,7 +64,7 @@ public class TestTupleGenerator
         var tables = new String [] { "Student", "Professor", "Course", "Teaching", "Transcript" };
         var tups   = new int [] { 500, 1000, 2000, 5000, 10000 };
     
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("results.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Documents&Results/results.txt"))) {
             for (int numTuples : tups) {
                 Comparable[][][] resultTest = test.generate(new int[]{numTuples, numTuples / 2});
 
