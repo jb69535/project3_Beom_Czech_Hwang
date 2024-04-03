@@ -119,6 +119,19 @@ public class Table
         out.println ("DDL> create table " + name + " (" + attributes + ")");
     } // constructor
 
+    public Table(String _name, String[] _attribute, Class[] _domain, String[] _key, String indexType) {
+        name = _name;
+        attribute = _attribute;
+        domain = _domain;
+        key = _key;
+        tuples = new ArrayList<>();
+        if (indexType.equals("LinHashMap")) {
+            index = new LinHashMap<>(KeyType.class, Comparable[].class);
+        } else {
+            index = new TreeMap<>();
+        }
+     } // constructor
+      
     //----------------------------------------------------------------------------------
     // Public Methods
     //----------------------------------------------------------------------------------
@@ -209,6 +222,17 @@ public class Table
 
         //  T O   B E   I M P L E M E N T E D 
 
+        try{
+            Comparable [] tempTuples = index.get(keyVal);
+            if(tempTuples != null){
+                rows = new ArrayList <> ();
+                rows.add(tempTuples);
+            }
+        }catch(Exception e){
+           System.out.println("Error in select(KeyType keyVal)");
+           e.printStackTrace();
+        }
+
         return new Table (name + count++, attribute, domain, key, rows);
     } // select
 
@@ -273,7 +297,37 @@ public class Table
                                                + table2.name + ")");
         //  T O   B E   I M P L E M E N T E D 
 
-        return null;
+        String[] t_attrs = attributes1.split(" ");
+        String[] u_attrs = attributes2.split(" ");
+
+        if (t_attrs.length != u_attrs.length) {
+            System.out.println("Attribute lengths do not match.");
+            return null;
+        }
+        
+        List<String> newAttributes = new ArrayList<>(Arrays.asList(this.attribute));
+        List<Class> newDomains = new ArrayList<>(Arrays.asList(this.domain));
+        for (int i = 0; i < table2.attribute.length; i++) {
+            String attr = table2.attribute[i];
+            if (newAttributes.contains(attr)) {
+                attr += "2";
+            }
+            newAttributes.add(attr);
+            newDomains.add(table2.domain[i]);
+        }
+    
+        Table result = new Table(name + count++, newAttributes.toArray(new String[0]), newDomains.toArray(new Class[0]), key);
+    
+        // Perform the join using the index
+        for (Comparable[] tuple1 : this.tuples) {
+            Comparable[] keyValues = extract(tuple1, t_attrs);
+            Comparable[] tuple2 = table2.index.get(new KeyType(keyValues));
+            if (tuple2 != null) {
+                result.insert(ArrayUtil.concat(tuple1, tuple2));
+            }
+        }
+    
+        return result;
 
     }
 
@@ -577,7 +631,14 @@ public class Table
     private boolean typeCheck (Comparable [] t)
     { 
         //  T O   B E   I M P L E M E N T E D 
-
+        if (t.length != domain.length) {
+            return false;
+        }
+        for (int i = 0; i < domain.length; i++) {
+            if (t[i] != null && !domain[i].isInstance(t[i])) {
+                return false;
+            }
+        }
         return true;
     } // typeCheck
 
