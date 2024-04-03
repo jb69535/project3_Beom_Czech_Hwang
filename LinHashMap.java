@@ -65,7 +65,10 @@ public class LinHashMap <K, V>
 
         void add (K k, V v)
         {
-            key[nKeys]   = k;
+            if (nKeys >= SLOTS) {
+                throw new IllegalStateException("Bucket is full");
+            }
+            key[nKeys] = k;
             value[nKeys] = v;
             nKeys++;
         } // add
@@ -127,7 +130,14 @@ public class LinHashMap <K, V>
         var enSet = new HashSet <Map.Entry <K, V>> ();
 
         //  T O   B E   I M P L E M E N T E D
-            
+        for (var bucket : hTable) {
+            for (var b = bucket; b != null; b = b.next) {
+                for (int j = 0; j < b.nKeys; j++) {
+                    enSet.add(new AbstractMap.SimpleEntry<>(b.key[j], b.value[j]));
+                }
+            }
+        }
+    
         return enSet;
     } // entrySet
 
@@ -215,7 +225,35 @@ public class LinHashMap <K, V>
         out.println ("split: bucket chain " + isplit);
 
         //  T O   B E   I M P L E M E N T E D
-
+        var newBucket = new Bucket();
+        hTable.add(newBucket);
+    
+        var oldBucket = hTable.get(isplit);
+        List<Integer> indexesToRemove = new ArrayList<>();
+    
+        for (int j = 0; j < oldBucket.nKeys; j++) {
+            var key = oldBucket.key[j];
+            var value = oldBucket.value[j];
+    
+            if (h2(key) == hTable.size() - 1) {
+                newBucket.add(key, value);
+                indexesToRemove.add(j);
+            }
+        }
+    
+        for (int i = indexesToRemove.size() - 1; i >= 0; i--) {
+            int indexToRemove = indexesToRemove.get(i);
+            System.arraycopy(oldBucket.key, indexToRemove + 1, oldBucket.key, indexToRemove, oldBucket.nKeys - indexToRemove - 1);
+            System.arraycopy(oldBucket.value, indexToRemove + 1, oldBucket.value, indexToRemove, oldBucket.nKeys - indexToRemove - 1);
+            oldBucket.nKeys--;
+        }
+    
+        isplit++;
+        if (isplit == mod1) {
+            isplit = 0;
+            mod1 = mod2;
+            mod2 *= 2;
+        }
     } // split
 
     /********************************************************************************
