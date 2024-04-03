@@ -1,50 +1,50 @@
 Number of tuples: 500
-Average select time (NoIndex): 1101296.4 ns
-Average select time (TreeMap): 82242.95 ns
-Average select time (HashMap): 12993.85 ns
-Average select time (LinHashMap): 14875.15 ns
-Average join time (NoIndex): 2177387.1 ns
-Average join time (TreeMap): 896703.1 ns
-Average join time (HashMap): 336551.05 ns
-Average join time (LinHashMap): 237396.75 ns
+Average select time (NoIndex): 713031.65 ns
+Average select time (TreeMap): 88043.75 ns
+Average select time (HashMap): 15512.4 ns
+Average select time (LinHashMap): 24369.4 ns
+Average join time (NoIndex): 1331443.55 ns
+Average join time (TreeMap): 304781.1 ns
+Average join time (HashMap): 261736.4 ns
+Average join time (LinHashMap): 259820.8 ns
 
 Number of tuples: 1000
-Average select time (NoIndex): 1674493.0 ns
-Average select time (TreeMap): 44895.85 ns
-Average select time (HashMap): 14728.25 ns
-Average select time (LinHashMap): 18358.05 ns
-Average join time (NoIndex): 200790.35 ns
-Average join time (TreeMap): 351912.15 ns
-Average join time (HashMap): 392613.5 ns
-Average join time (LinHashMap): 422377.15 ns
+Average select time (NoIndex): 1653877.15 ns
+Average select time (TreeMap): 77328.7 ns
+Average select time (HashMap): 22118.65 ns
+Average select time (LinHashMap): 165922.85 ns
+Average join time (NoIndex): 249491.1 ns
+Average join time (TreeMap): 457222.2 ns
+Average join time (HashMap): 378114.3 ns
+Average join time (LinHashMap): 376116.25 ns
 
 Number of tuples: 2000
-Average select time (NoIndex): 1058691.55 ns
-Average select time (TreeMap): 52941.85 ns
-Average select time (HashMap): 10500.15 ns
-Average select time (LinHashMap): 6618.6 ns
-Average join time (NoIndex): 331456.0 ns
-Average join time (TreeMap): 226268.55 ns
-Average join time (HashMap): 208551.7 ns
-Average join time (LinHashMap): 209996.55 ns
+Average select time (NoIndex): 824863.95 ns
+Average select time (TreeMap): 134458.2 ns
+Average select time (HashMap): 17331.65 ns
+Average select time (LinHashMap): 12483.85 ns
+Average join time (NoIndex): 490043.55 ns
+Average join time (TreeMap): 439431.0 ns
+Average join time (HashMap): 394692.0 ns
+Average join time (LinHashMap): 483335.4 ns
 
 Number of tuples: 5000
-Average select time (NoIndex): 3112545.6 ns
-Average select time (TreeMap): 48702.75 ns
-Average select time (HashMap): 10047.0 ns
-Average select time (LinHashMap): 8904.2 ns
-Average join time (NoIndex): 372960.65 ns
-Average join time (TreeMap): 1249577.4 ns
-Average join time (HashMap): 945377.7 ns
-Average join time (LinHashMap): 1602645.6 ns
+Average select time (NoIndex): 4844972.6 ns
+Average select time (TreeMap): 101506.35 ns
+Average select time (HashMap): 42859.75 ns
+Average select time (LinHashMap): 12954.15 ns
+Average join time (NoIndex): 1273255.65 ns
+Average join time (TreeMap): 2315943.05 ns
+Average join time (HashMap): 1641081.55 ns
+Average join time (LinHashMap): 2529919.15 ns
 
 Number of tuples: 10000
-Average select time (NoIndex): 1257023.15 ns
-Average select time (TreeMap): 46727.6 ns
-Average select time (HashMap): 7269.75 ns
-Average select time (LinHashMap): 50096.45 ns
-Average join time (NoIndex): 1397216.35 ns
-Average join time (TreeMap): 871715.9 ns
-Average join time (HashMap): 741591.35 ns
-Average join time (LinHashMap): 845575.0 ns
+Average select time (NoIndex): 5273899.0 ns
+Average select time (TreeMap): 77000.7 ns
+Average select time (HashMap): 22086.95 ns
+Average select time (LinHashMap): 15684.9 ns
+Average join time (NoIndex): 1159413.3 ns
+Average join time (TreeMap): 1555777.15 ns
+Average join time (HashMap): 1325026.45 ns
+Average join time (LinHashMap): 3134740.85 ns
 
